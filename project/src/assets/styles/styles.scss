@@ -1,0 +1,89 @@
+@import 'variables';
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: $font-text;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.title {
+    font-family: $font-title;
+    font-size: 28px;
+    font-weight: 500;
+    color: $dark-blue;
+}
+
+.subtitle {
+    font-family: $font-text;
+    font-size: 14px;
+    font-weight: 700;
+    color: $dark-blue;
+}
+
+.text {
+    font-size: 14px;
+    color: $basic-black;
+}
+
+.btn {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    background: $middle-blue;
+    color: $basic-white;
+    font-family: $font-title;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 220px;
+
+    svg {
+        fill: $basic-white;
+    }
+
+    &:hover,
+    &:active {
+        background: $basic-white;
+        color: $middle-blue;
+        border: 2px solid $middle-blue;
+
+        svg {
+            fill: $middle-blue;
+        }
+    }
+}
+
+.btn-icon {
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+
+    svg {
+        width: 24px;
+        height: 24px;
+        fill: $light-blue;
+    }
+
+    &:hover,
+    &:active {
+        background: $light-blue;
+
+        svg {
+            fill: $basic-white;
+        }
+    }
+}
