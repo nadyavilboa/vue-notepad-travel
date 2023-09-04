@@ -2,7 +2,7 @@
     <div class="v-item-note">
         <div class="v-item-note__container">
             <div class="v-item-note__left-part">
-                <img class="v-item-note__img-preview" width="250" height="200" :src=" require('../assets/images/israel-preview.jpg') " alt="" />
+                <img class="v-item-note__img-preview" width="250" height="200" :src=" require('../assets/images/' + note_data.imgPreview) " :alt="note_data.imgPreview" />
             </div>
             <div class="v-item-note__right-part">
                 <div class="v-item-note__controls">
@@ -18,27 +18,29 @@
                     </button>  
                 </div>
                 <div class="v-item-note__info">
-                    <p class="v-item-note__text subtitle">Израиль, Иерусалим</p>
-                    <p class="v-item-note__text subtitle">50000 ₽</p>
-                    <p class="v-item-note__text subtitle">июль 2022</p>
+                    <p class="v-item-note__text subtitle">{{ note_data.location }}</p>
+                    <p class="v-item-note__text subtitle">{{ note_data.price }} ₽</p>
+                    <p class="v-item-note__text subtitle">{{ note_data.period }}</p>
                 </div>
             </div>
         </div>
         <div class="v-item-note__description text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Vestibulum nec quam a ipsum luctus iaculis. 
-            Nullam purus mauris, fringilla sit amet pulvinar a, ultrices quis nisi.
+            {{ note_data.description }}
         </div>
         <button class="v-item-note__btn-full btn">Подробнее</button>
     </div>
 </template>
 
 <script>
-
 export default {
     name: "v-item-note",
     props: {
-        
+        note_data: {
+            type: Object,
+            default() {
+                return {}
+            }
+        }
     },
     data() {
         return {}
@@ -81,6 +83,7 @@ export default {
     .v-item-note__img-preview {
         border-radius: 20px;
         width: 250px;
+        height: 167px;
     }
 
     .v-item-note__right-part {

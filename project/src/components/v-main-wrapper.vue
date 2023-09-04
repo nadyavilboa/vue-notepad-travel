@@ -11,11 +11,13 @@
             </button>
         </div>
         <v-list-notes />
+        <div class="v-main-wrapper__amount-block footer">Total notes: {{ NOTES.length }}</div>
     </div>
 </template>
 
 <script>
 import vListNotes from './v-list-notes.vue';
+import { mapGetters } from 'vuex';
 
 export default {
     name: "v-main-wrapper",
@@ -28,7 +30,11 @@ export default {
     data() {
         return {}
     },
-    computed: {},
+    computed: {
+        ...mapGetters([
+            'NOTES',
+        ]),
+    },
     methods: {
         
     },
@@ -41,8 +47,22 @@ export default {
 <style lang="scss">
     .v-main-wrapper__top-content {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        flex-wrap: wrap;
         align-items: center;
         padding: 20px;
+
+        @media (min-width: 768px) {
+            justify-content: space-between;
+        }
+    }
+
+    .v-main-wrapper__amount-block {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+        padding: 30px;
+        font-size: 18px;
+        font-weight: 500;
     }
 </style>

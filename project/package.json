@@ -38,7 +38,10 @@
     },
     "rules": {
       "no-console": "off"
-    }
+    },
+    "eslint.workingDirectories": [
+      {"mode": "auto"}
+    ]
   },
   "browserslist": [
     "> 1%",
