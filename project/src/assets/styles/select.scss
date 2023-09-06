@@ -1,0 +1,36 @@
+.select {
+    position: relative;
+    width: 220px;
+    align-self: flex-start;
+
+    &__title {
+        padding: 15px;
+        cursor: pointer;
+        border-radius: 4px;
+        border: 2px solid $dark-blue;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__options {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        background: $basic-white;
+        border-radius: 4px;
+        border: 2px solid $dark-blue;
+    }
+
+    &__item {
+        margin: 0;
+        padding: 5px;
+        cursor: pointer;
+
+        &:hover {
+            background: $light-blue;
+            color: $basic-white;
+        }
+    }
+}

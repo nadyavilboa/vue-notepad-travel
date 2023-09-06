@@ -3,7 +3,7 @@
         <div v-if="!NOTES.length" class="v-list-notes__title title">There are no notes...</div>
         <div v-else class="v-list-notes__list">
             <v-item-note
-                v-for="note in NOTES"
+                v-for="note in FILTER"
                 :key="note.id"
                 :note_data="note"
             />
@@ -30,6 +30,7 @@ export default {
     computed: {
         ...mapGetters([
             'NOTES',
+            'FILTER'
         ]),
     },
     methods: {

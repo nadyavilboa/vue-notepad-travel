@@ -5,12 +5,39 @@ const store = createStore({
     state: {
         // переменные, объекты, массивы, коллекции и т.д.
         notes: [],
+        filterNotes: [],
     },
     mutations: {
         // для изменения состояний в state, образуют очередь, нельзя одновременно выполнить две мутации
         SET_NOTES_TO_STATE: (state, notes) => {
             state.notes = notes;
+            state.filterNotes = state.notes.slice();
         },
+        FILTER_NOTES: (state, option) => {
+            switch(option) {
+                case 'Все континенты': 
+                    state.filterNotes = state.notes.slice();
+                    break;
+                default:
+                    state.filterNotes = state.notes.filter((item) => item.continent === option);
+                    break;
+            }
+        },
+        SEARCH_VALUE: (state, searchVal) => {
+            if (searchVal) {
+                const result = state.filterNotes.filter(obj => {
+                    for (let key in obj) {
+                        if (obj[key].toString().includes(searchVal)) {
+                        return true;
+                        }
+                    }
+                    return false;
+                    }
+                );
+    
+                state.filterNotes = result;
+            }
+        }
     },
     actions: {
         async GET_NOTES_FROM_API({commit}) {
@@ -22,13 +49,22 @@ const store = createStore({
                 console.log(error);
                 return error;
             }
-         },
+        },
+        FILTER_NOTES({commit}, option) {
+            commit('FILTER_NOTES', option)
+        },
+        SEARCH_VALUE({commit}, searchVal) {
+            commit('SEARCH_VALUE', searchVal)
+        }
     },
     getters: {
         // получение данных из state
         NOTES(state) {
             return state.notes;
         },
+        FILTER(state) {
+            return state.filterNotes
+        }
     },
 });
 

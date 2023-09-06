@@ -1,0 +1,24 @@
+.search {
+    display: flex;
+    align-items: center;
+    border: 2px solid $dark-blue;
+    border-radius: 4px;
+
+    &__input {
+        border: none;
+        padding: 15px;
+        width: 178px;
+
+        &:focus-visible {
+            border: 0;
+            outline: none;
+        }
+    }
+
+    &__btn {
+        border: 0;
+        background: transparent;
+        padding: 8px;
+        cursor: pointer;
+    }
+}

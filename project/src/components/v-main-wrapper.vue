@@ -10,6 +10,18 @@
                 <span class="v-main-wrapper__btn-text">Добавить запись</span>
             </button>
         </div>
+        <div class="v-main-wrapper__filter-block">
+            <div class="v-main-wrapper__select">
+                <v-select
+                    :options="options"
+                    @select="optionSelect"
+                    :selected="selected"
+                />
+            </div>
+            <div class="v-main-wrapper__search">
+                <v-input-search />
+            </div>
+        </div>
         <v-list-notes />
         <div class="v-main-wrapper__amount-block footer">Total notes: {{ NOTES.length }}</div>
     </div>
@@ -17,18 +29,33 @@
 
 <script>
 import vListNotes from './v-list-notes.vue';
-import { mapGetters } from 'vuex';
+import vSelect from './v-select.vue';
+import vInputSearch from './v-input-search.vue';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
     name: "v-main-wrapper",
     components: {
-        vListNotes
+        vListNotes,
+        vSelect,
+        vInputSearch
     },
     props: {
         
     },
     data() {
-        return {}
+        return {
+            options: [
+                {name: 'Все континеты', value: 'Все континенты'},
+                {name: 'Евразия', value: 'Евразия'},
+                {name: 'Африка', value: 'Африка'},
+                {name: 'Северная Америка', value: 'Северная Америка'},
+                {name: 'Южная Америка', value:'Южная Америка'},
+                {name: 'Австралия', value: 'Австралия'},
+                {name: 'Антарктида', value: 'Антарктида'},
+            ],
+            selected: 'Все континенты'
+        }
     },
     computed: {
         ...mapGetters([
@@ -36,7 +63,13 @@ export default {
         ]),
     },
     methods: {
-        
+        ...mapActions([
+            'FILTER_NOTES',
+        ]),
+        optionSelect(option) {
+            this.selected = option.name
+            this.FILTER_NOTES(option.value)
+        }
     },
     mounted() {
 
@@ -45,7 +78,8 @@ export default {
 </script>
 
 <style lang="scss">
-    .v-main-wrapper__top-content {
+    .v-main-wrapper__top-content,
+    .v-main-wrapper__filter-block {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
