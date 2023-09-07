@@ -6,6 +6,7 @@
             id="search"
             name="search"
             value=""
+            placeholder="Найти..."
             @change="changeSearch($event.target.value)"
         />
         <button

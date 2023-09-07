@@ -50,6 +50,10 @@ export default {
 </script>
 
 <style scoped>
+    .v-list-notes {
+        padding-top: 160px;
+    }
+
     .v-list-notes__list {
         display: flex;
         flex-wrap: wrap;

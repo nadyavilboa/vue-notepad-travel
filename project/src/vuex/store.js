@@ -6,24 +6,29 @@ const store = createStore({
         // переменные, объекты, массивы, коллекции и т.д.
         notes: [],
         filterNotes: [],
+        historyNotes: [],
     },
     mutations: {
         // для изменения состояний в state, образуют очередь, нельзя одновременно выполнить две мутации
         SET_NOTES_TO_STATE: (state, notes) => {
             state.notes = notes;
             state.filterNotes = state.notes.slice();
+            state.historyNotes = state. notes.slice();
         },
         FILTER_NOTES: (state, option) => {
             switch(option) {
                 case 'Все континенты': 
                     state.filterNotes = state.notes.slice();
+                    state.historyNotes = state.filterNotes.slice();
                     break;
                 default:
                     state.filterNotes = state.notes.filter((item) => item.continent === option);
+                    state.historyNotes = state.filterNotes.slice();
                     break;
             }
         },
         SEARCH_VALUE: (state, searchVal) => {
+            state.filterNotes = state.historyNotes.slice();
             if (searchVal) {
                 const result = state.filterNotes.filter(obj => {
                     for (let key in obj) {
@@ -55,7 +60,7 @@ const store = createStore({
         },
         SEARCH_VALUE({commit}, searchVal) {
             commit('SEARCH_VALUE', searchVal)
-        }
+        },
     },
     getters: {
         // получение данных из state
@@ -64,7 +69,7 @@ const store = createStore({
         },
         FILTER(state) {
             return state.filterNotes
-        }
+        },
     },
 });
 
