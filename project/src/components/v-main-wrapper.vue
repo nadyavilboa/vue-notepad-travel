@@ -3,7 +3,7 @@
         <div class="v-main-wrapper__header header">
             <div class="v-main-wrapper__top-content">
                 <h2 class="v-main-wrappper__title title">Блокнот путешественника</h2>
-                <button class="v-main-wrapper__btn btn">
+                <button class="v-main-wrapper__btn btn btn-active">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M24 13.7139H0V10.7139H24V13.7139Z" fill=""/>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M14 0L14 24H11L11 0H14Z" fill=""/>

@@ -4,15 +4,35 @@
     justify-content: center;
     align-items: center;
     padding: 0.5rem 1rem;
-    border: 2px solid transparent;
     border-radius: 4px;
-    background: $middle-blue;
-    color: $basic-white;
+    background: $basic-white;
+    border: 2px solid $dark-blue;
+    color: $dark-blue;
     font-family: $font-title;
     font-size: 20px;
     text-transform: uppercase;
     cursor: pointer;
     width: 220px;
+
+    svg {
+        fill: $dark-blue;
+    }
+
+    &:hover,
+    &:active {
+        color: $middle-blue;
+        border: 2px solid $middle-blue;
+
+        svg {
+            fill: $middle-blue;
+        }
+    }
+}
+
+.btn-active {
+    border: 2px solid transparent;
+    background: $middle-blue;
+    color: $basic-white;
 
     svg {
         fill: $basic-white;

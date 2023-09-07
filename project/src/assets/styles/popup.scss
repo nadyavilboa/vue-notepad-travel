@@ -1,0 +1,37 @@
+.v-popup {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    backdrop-filter: blur(5px);
+
+    &__container {
+        padding: 16px;
+        position: fixed;
+        top: 50px;
+        width: 100%;
+        background: $basic-white;
+
+        @media(min-width: 768px) {
+            width: 600px;
+        }
+    }
+
+    &__header,
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

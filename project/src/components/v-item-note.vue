@@ -1,5 +1,22 @@
 <template>
-    <div class="v-item-note">
+    <div class="v-item-note card">
+
+        <v-popup 
+            v-if="isPopupShow"
+            :title="'Запись о путешествии'"
+            :leftBtnName="'Редактировать'"
+            :rightBtnName="'Удалить'"
+            @closePopup="closePopupInfo"
+        >
+            <div class="v-popup__content-card">
+                <p class="v-item-note__text subtitle">{{ note_data.continent }}</p>
+                <p class="v-item-note__text subtitle">{{ note_data.location }}</p>
+                <p class="v-item-note__text subtitle">{{ note_data.price }} ₽</p>
+                <p class="v-item-note__text subtitle">{{ note_data.period }}</p>
+                <p class="v-item-note__text subtitle">{{ note_data.fullDescription }}</p>
+            </div>
+        </v-popup>
+
         <div class="v-item-note__container">
             <div class="v-item-note__left-part">
                 <img class="v-item-note__img-preview" width="250" height="200" :src=" require('../assets/images/' + note_data.imgPreview) " :alt="note_data.imgPreview" />
@@ -27,13 +44,22 @@
         <div class="v-item-note__description text">
             {{ note_data.description }}
         </div>
-        <button class="v-item-note__btn-full btn">Подробнее</button>
+        <button
+            class="v-item-note__btn-full btn btn-active"
+            @click="showPopupInfo"
+        >
+            Подробнее
+        </button>
     </div>
 </template>
 
 <script>
+import vPopup from './popup/v-popup.vue'
 export default {
     name: "v-item-note",
+    components: {
+        vPopup,
+    },
     props: {
         note_data: {
             type: Object,
@@ -43,11 +69,18 @@ export default {
         }
     },
     data() {
-        return {}
+        return {
+            isPopupShow: false,
+        }
     },
     computed: {},
     methods: {
-        
+        showPopupInfo() {
+            this.isPopupShow = true;
+        },
+        closePopupInfo() {
+            this.isPopupShow = false;
+        }
     },
     mounted() {
 
@@ -61,9 +94,7 @@ export default {
         flex-direction: column;
         gap: 20px;
         padding: 1rem;
-        box-shadow: 0 5px 25px rgb(30 31 33 / 12%);
         max-width: 280px;
-        border-radius: 20px;
 
         @media (min-width: 768px) {
             max-width: 480px;

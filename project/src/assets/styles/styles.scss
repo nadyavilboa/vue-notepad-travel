@@ -1,7 +1,18 @@
+// Global
+
+@import 'variables';
 @import 'page';
+
+// Blocks
+
 @import 'header';
+@import 'card';
 @import 'text';
 @import 'buttons';
 @import 'select';
 @import 'search';
 @import 'footer';
+
+// Modal
+
+@import 'popup';
