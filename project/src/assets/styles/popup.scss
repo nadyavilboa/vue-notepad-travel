@@ -16,6 +16,9 @@
         top: 50px;
         width: 100%;
         background: $basic-white;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
 
         @media(min-width: 768px) {
             width: 600px;
@@ -24,14 +27,25 @@
 
     &__header,
     &__footer {
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    &__content {
+    &__footer-center {
+        width: auto;
         display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    &__content-card {
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 20px;
     }
 }

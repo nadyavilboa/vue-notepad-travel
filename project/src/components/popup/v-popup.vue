@@ -13,7 +13,7 @@
             <div class="v-popup__content">
                 <slot></slot>
             </div>
-            <div class="v-popup__footer">
+            <div v-if="smartPopup" class="v-popup__footer">
                 <button
                     class="close_modal btn"
                     @click="leftBtnAction"
@@ -40,6 +40,12 @@ export default {
             type: String,
             default() {
                 return 'Popup name'
+            }
+        },
+        smartPopup: {
+            type: Boolean,
+            default() {
+                return true
             }
         },
         leftBtnName: {
