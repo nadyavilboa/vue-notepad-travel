@@ -49,19 +49,23 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .v-list-notes {
-        padding-top: 160px;
-    }
+        padding-top: 280px;
 
-    .v-list-notes__list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 50px;
-    }
+        &__title {
+            text-align: center;
+        }
 
-    .v-list-notes__title {
-        text-align: center;
+        &__list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        @media (min-width: 768px) {
+            padding-top: 160px;
+        }
     }
 </style>

@@ -7,6 +7,7 @@ const store = createStore({
         notes: [],
         filterNotes: [],
         historyNotes: [],
+        searchVal: ''
     },
     mutations: {
         // для изменения состояний в state, образуют очередь, нельзя одновременно выполнить две мутации
@@ -16,6 +17,7 @@ const store = createStore({
             state.historyNotes = state. notes.slice();
         },
         FILTER_NOTES: (state, option) => {
+            state.searchVal = '';
             switch(option) {
                 case 'Все континенты': 
                     state.filterNotes = state.notes.slice();
@@ -26,6 +28,9 @@ const store = createStore({
                     state.historyNotes = state.filterNotes.slice();
                     break;
             }
+        },
+        SEARCH_CHANGE: (state, value) => {
+            state.searchVal = value;
         },
         SEARCH_VALUE: (state, searchVal) => {
             state.filterNotes = state.historyNotes.slice();
@@ -42,6 +47,15 @@ const store = createStore({
     
                 state.filterNotes = result;
             }
+        },
+        DELETE_NOTE: (state, id) => {
+            // обновление store после удаления
+            // ищем индекс нужного элемента и вырезаем из массива, обновляем копии массива
+            
+            const indexDeleteNote = state.notes.filter((item) => item.id === id);
+            state.notes.splice(indexDeleteNote, 1);
+            state.filterNotes = state.notes.slice();
+            state.historyNotes = state. notes.slice();
         }
     },
     actions: {
@@ -58,9 +72,22 @@ const store = createStore({
         FILTER_NOTES({commit}, option) {
             commit('FILTER_NOTES', option)
         },
+        SEARCH_CHANGE({commit}, value) {
+            commit('SEARCH_CHANGE', value)
+        },
         SEARCH_VALUE({commit}, searchVal) {
             commit('SEARCH_VALUE', searchVal)
         },
+        async DELETE_NOTE({commit}, id) {
+            try {
+                const response = await axios.delete(`http://localhost:3000/notes/${id}`);
+                commit('DELETE_NOTE', id);
+                return response;
+            } catch (error) {
+                console.log(error);
+                return error;
+            }
+        }
     },
     getters: {
         // получение данных из state
@@ -70,6 +97,9 @@ const store = createStore({
         FILTER(state) {
             return state.filterNotes
         },
+        SEARCH(state) {
+            return state.searchVal
+        }
     },
 });
 

@@ -50,6 +50,27 @@
     }
 }
 
+.btn-delete {
+    border: 2px solid transparent;
+    background: $error;
+    color: $basic-white;
+
+    svg {
+        fill: $basic-white;
+    }
+
+    &:hover,
+    &:active {
+        background: $basic-white;
+        color: $error;
+        border: 2px solid $error;
+
+        svg {
+            fill: $error;
+        }
+    }
+}
+
 .btn-icon {
     border: none;
     border-radius: 4px;

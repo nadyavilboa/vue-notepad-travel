@@ -1,5 +1,5 @@
 <template>
-    <div class="v-popup" ref="popup">
+    <div :class="{'v-popup-smart': smartPopup, 'v-popup-info': !smartPopup, 'v-popup': true}" ref="popup">
         <div class="v-popup__container card">
             <div class="v-popup__header">
                 <span class="title">{{ title }}</span>
@@ -21,7 +21,7 @@
                     {{ leftBtnName }}
                 </button>
                 <button
-                    class="submit_btn btn btn-active"
+                    :class="[ 'submit_btn', 'btn', rightBtnClass ]"
                     @click="rightBtnAction"
                 >
                     {{ rightBtnName }}
@@ -39,7 +39,7 @@ export default {
         title: {
             type: String,
             default() {
-                return 'Popup name'
+                return 'Уведомление'
             }
         },
         smartPopup: {
@@ -51,13 +51,19 @@ export default {
         leftBtnName: {
             type: String,
             default() {
-                return 'Cancel'
+                return 'Отмена'
             }
         },
         rightBtnName: {
             type: String,
             default() {
                 return 'submit'
+            }
+        },
+        rightBtnClass: {
+            type: String,
+            default() {
+                return ''
             }
         }
     },
@@ -70,6 +76,12 @@ export default {
         closePopup() {
             this.$emit('closePopup');
         },
+        leftBtnAction() {
+            this.$emit('leftBtnAction');
+        },
+        rightBtnAction() {
+            this.$emit('rightBtnAction');
+        }
     },
     mounted() {
         let vm = this;
