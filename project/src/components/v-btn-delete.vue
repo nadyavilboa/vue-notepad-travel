@@ -1,8 +1,9 @@
 <template>
     <div class="delete-wrapper">
+
         <v-popup 
             v-if="isPopupShow"
-            :title="'Удаление'"
+            :title="'Удалить запись?'"
             :smartPopup="true"
             @closePopup="closePopup"
             @leftBtnAction="closePopup"
@@ -16,6 +17,7 @@
                 <p class="text">Отменить удаление будет невозможно</p>
             </div>
         </v-popup>
+
         <button
             :class="{'btn btn-active': fullBtn, 'btn-icon': !fullBtn, 'v-btn-delete': true}"
             aria-label="delete-note"

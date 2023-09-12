@@ -21,7 +21,7 @@
                     {{ leftBtnName }}
                 </button>
                 <button
-                    :class="[ 'submit_btn', 'btn', rightBtnClass ]"
+                    :class="[ 'submit_btn', 'btn', 'btn-active', rightBtnClass ]"
                     @click="rightBtnAction"
                 >
                     {{ rightBtnName }}
@@ -57,7 +57,7 @@ export default {
         rightBtnName: {
             type: String,
             default() {
-                return 'submit'
+                return 'Сохранить'
             }
         },
         rightBtnClass: {

@@ -4,6 +4,7 @@
     font-family: $font-text;
     font-size: 14px;
     box-sizing: border-box;
+    scrollbar-color: $light-blue $basic-white;
 }
 
 img {
@@ -14,4 +15,21 @@ img {
 h1, h2, h3, p, ul {
     margin: 0;
     padding: 0;
+}
+
+*::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 8px;               /* width of the entire scrollbar */
+}
+  
+*::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+    background: $basic-white;        /* color of the tracking area */
+}
+  
+*::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+    background-color: $light-blue;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 1px solid $basic-white;  /* creates padding around scroll thumb */
 }
