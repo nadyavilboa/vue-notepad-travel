@@ -1,5 +1,5 @@
 <template>
-    <div class="delete-wrapper">
+    <div class="v-delete-wrapper">
 
         <v-popup 
             v-if="isPopupShow"
@@ -40,7 +40,7 @@
     import { mapActions } from 'vuex';
     import vPopup from './popup/v-popup.vue';
     export default {
-        name: "v-btn-delete",
+        name: "v-delete-wrapper",
         components: {
             vPopup
         },

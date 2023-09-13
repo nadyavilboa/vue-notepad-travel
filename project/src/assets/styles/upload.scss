@@ -1,0 +1,22 @@
+.v-upload-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+    position: relative;
+
+    &__empty-img {
+        width: 250px;
+        height: 167px;
+        border-radius: 20px;
+        background: $light-gray;
+    }
+
+    &__btn {
+        position: absolute;
+        left: calc(50% - 110px);
+        top: calc(50% - 21px);
+    }
+}

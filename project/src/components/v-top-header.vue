@@ -9,6 +9,7 @@
             @leftBtnAction="closePopup"
             @rightBtnAction="addNote"
         >
+            <v-form />
         </v-popup>
 
         <h2 class="v-main-wrappper__title title">Блокнот путешественника</h2>
@@ -27,10 +28,12 @@
 
 <script>
     import vPopup from './popup/v-popup.vue';
+    import vForm from './popup/v-form.vue';
     export default {
         name: "v-top-header",
         components: {
-            vPopup
+            vPopup,
+            vForm
         },
         props: {
         },

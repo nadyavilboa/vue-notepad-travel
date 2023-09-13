@@ -5,7 +5,8 @@ $middle-blue: #007EA7;
 $light-blue: #00A7E1;
 $basic-white: #FFF;
 $error: #E85324;
-$box-shadow: 0 5px 25px rgba(30, 31, 33, 0.12);
+$light-gray: rgba(30, 31, 33, 0.12); 
+$box-shadow: 0 5px 25px $light-gray;
 
 // Fonts
 $font-title: 'Oswald', Arial, Helvetica, sans-serif;

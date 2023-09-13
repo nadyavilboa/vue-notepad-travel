@@ -36,7 +36,7 @@
     }
 
     &-smart .v-popup__container {
-        width: 500;
+        width: 100%;
 
         @media(min-width: 768px) {
             width: 500px;
@@ -53,6 +53,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 20px;
     }
 
     &__footer-center {

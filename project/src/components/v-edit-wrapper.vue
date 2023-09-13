@@ -1,5 +1,5 @@
 <template>
-    <div class="edit-wrapper">
+    <div class="v-edit-wrapper">
 
         <v-popup 
             v-if="isPopupShow"
@@ -9,6 +9,7 @@
             @leftBtnAction="closePopup"
             @rightBtnAction="saveNote"
         >
+            <v-form :note_data="note_data" />
         </v-popup>
 
         <button 
@@ -31,16 +32,24 @@
 
 <script>
     import vPopup from './popup/v-popup.vue';
+    import vForm from './popup/v-form.vue';
     export default {
-        name: "v-btn-edit",
+        name: "v-edit-wrapper",
         components: {
-            vPopup
+            vPopup,
+            vForm
         },
         props: {
             fullBtn: {
                 type: Boolean,
                 default() {
                     return false
+                }
+            },
+            note_data: {
+                type: Object,
+                default() {
+                    return {}
                 }
             }
         },

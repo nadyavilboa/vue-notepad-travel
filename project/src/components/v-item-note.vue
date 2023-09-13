@@ -24,8 +24,11 @@
                     />
                 </div>
                 <div class="v-popup__footer-center">
-                    <v-btn-edit fullBtn />
-                    <v-btn-delete
+                    <v-edit-wrapper
+                        fullBtn
+                        :note_data="note_data"
+                    />
+                    <v-delete-wrapper
                         fullBtn
                         :note_data="note_data"
                     />  
@@ -39,15 +42,14 @@
                     class="v-item-note__img-preview"
                     width="250"
                     height="200"
-                    :src="
-                    require('../assets/images/' + note_data.imgPreview) "
+                    :src=" require('../assets/images/' + note_data.imgPreview) "
                     :alt="note_data.city"
                 />
             </div>
             <div class="v-item-note__right-part">
                 <div class="v-item-note__controls">
-                    <v-btn-edit />
-                    <v-btn-delete :note_data="note_data" />  
+                    <v-edit-wrapper :note_data="note_data" />
+                    <v-delete-wrapper :note_data="note_data" />  
                 </div>
                 <v-note-info :note_data="note_data" />
             </div>
@@ -66,15 +68,15 @@
 
 <script>
 import vPopup from './popup/v-popup.vue';
-import vBtnEdit from './v-btn-edit.vue';
-import vBtnDelete from './v-btn-delete.vue';
+import vEditWrapper from './v-edit-wrapper.vue';
+import vDeleteWrapper from './v-delete-wrapper.vue';
 import vNoteInfo from './v-note-info.vue';
 export default {
     name: "v-item-note",
     components: {
         vPopup,
-        vBtnEdit,
-        vBtnDelete,
+        vEditWrapper,
+        vDeleteWrapper,
         vNoteInfo
     },
     props: {
