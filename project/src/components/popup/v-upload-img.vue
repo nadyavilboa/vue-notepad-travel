@@ -2,13 +2,14 @@
     <div class="v-upload-img">
         <span class="v-upload-img__text">{{ text }}</span>
         <img
-            v-if="img"
-            :src=" require('../../assets/images/' + img) "
+            :class="{'popupImg': popupImg, 'previewImg': !popupImg}"
+            v-if="file"
+            :src=" require('../../assets/images/' + file) "
             alt=""
         />
         <span
             v-else
-            class="v-upload-img__empty-img"
+            :class="{'popupImg': popupImg, 'previewImg': !popupImg, 'v-upload-img__empty-img': true}"
         />
         <label 
             class="v-upload-img__btn btn"
@@ -27,8 +28,18 @@
                 name="file"
                 type="file"
                 value=""
+                @change="uploadImg"
             />
         </label>
+        <div
+            v-if="selectedFileUrl"
+            :class="{'popupImg': popupImg, 'previewImg': !popupImg, 'v-upload-img__new-img': true}"
+        >
+            <img
+                :src="selectedFileUrl"
+                alt="new preview img"
+            >
+        </div>
     </div>
 </template>
 
@@ -49,19 +60,35 @@ export default {
                 default() {
                     return ''
                 }
+            },
+            popupImg: {
+                type: Boolean,
+                default() {
+                    return false
+                }
             }
         },
         data() {
             return {
-                file: ''
+                file: this.img,
+                selectedFile: null,
+                selectedFileUrl: null
             }
         },
         computed: {},
         methods: {
-            uploadImg() {
-                console.log('загружено изображение');
+            uploadImg(event) {
+                this.selectedFile = event.target.files[0];
+                console.log(this.selectedFile);
+                this.selectedFileUrl = URL.createObjectURL(this.selectedFile);
+                console.log(this.selectedFileUrl);
             }
         },
+        beforeUnmount() {
+            if (this.selectedFileUrl) {
+                URL.revokeObjectURL(this.selectedFileUrl);
+            }
+        }
     }
 </script>
 <style scoped lang="scss">

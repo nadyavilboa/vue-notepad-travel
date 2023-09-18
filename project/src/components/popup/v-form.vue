@@ -33,9 +33,21 @@
             <v-upload-img
                 :text="'Popup image'"
                 :img="note_data ? note_data.imgPopup : ''"
+                :popup-img="true"
             />
         </div>
-
+        <textarea
+            class="v-form__description input-text"
+            placeholder="Ключевая информация..."
+            rows="5"
+            :value="note_data ? note_data.description : ''"
+        ></textarea>
+        <textarea
+            class="v-form__description input-text"
+            placeholder="Подробное описание..."
+            rows="10"
+            :value="note_data ? note_data.fullDescription : ''"
+        ></textarea>
     </div>
 </template>
 
@@ -91,6 +103,15 @@ export default {
             align-items: center;
             flex-wrap: wrap;
             gap: 20px;
+        }
+
+        &__description {
+            resize: vertical;
+
+            &.input-text {
+                width: 100%;
+                font-weight: 400;
+            }
         }
     }
 </style>

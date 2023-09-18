@@ -7,16 +7,41 @@
     margin: 0 auto;
     position: relative;
 
+    .previewImg img {
+        width: 350px;
+        height: 267px;
+    }
+
+    .popupImg img {
+        width: 100%;
+        height: auto;
+    }
+
     &__empty-img {
-        width: 250px;
-        height: 167px;
         border-radius: 20px;
         background: $light-gray;
+    }
+
+    &__empty-img.previewImg {
+        width: 350px;
+        height: 267px;
+    }
+
+    &__empty-img.popupImg {
+        width: 450px;
+        height: 300px;
     }
 
     &__btn {
         position: absolute;
         left: calc(50% - 110px);
         top: calc(50% - 21px);
+        z-index: 5;
+    }
+
+    &__new-img {
+        position: absolute;
+        top: 25px;
+        left: 0;
     }
 }
