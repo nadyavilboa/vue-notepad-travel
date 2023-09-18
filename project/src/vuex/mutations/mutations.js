@@ -1,6 +1,13 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export default {
     SET_NOTES_TO_STATE: (state, notes) => {
         state.notes = notes;
+
+        state.notes.forEach(note => {
+            note.id = uuidv4();
+        });
+
         state.filterNotes = state.notes.slice();
         state.historyNotes = state. notes.slice();
     },

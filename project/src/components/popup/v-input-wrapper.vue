@@ -5,6 +5,7 @@
             type="text"
             :value="value"
             :placeholder="placeholder"
+            @change="changeInputVal($event.target.value)"
         />
     </div>
 </template>
@@ -26,6 +27,12 @@ export default {
                 default() {
                     return ''
                 }
+            },
+            inputName: {
+                type: String,
+                default() {
+                    return ''
+                }
             }
         },
         data() {
@@ -33,7 +40,9 @@ export default {
         },
         computed: {},
         methods: {
-
+            changeInputVal(value) {
+                this.$emit('changeInputVal', value, this.inputName);
+            }
         },
     }
 </script>

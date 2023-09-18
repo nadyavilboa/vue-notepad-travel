@@ -12,9 +12,15 @@
         height: 267px;
     }
 
+    .popupImg {
+        width: 100%;
+    }
+
     .popupImg img {
         width: 100%;
         height: auto;
+        max-height: 300px;
+        margin: 0 auto;
     }
 
     &__empty-img {

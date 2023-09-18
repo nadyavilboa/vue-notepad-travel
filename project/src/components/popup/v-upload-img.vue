@@ -79,9 +79,9 @@ export default {
         methods: {
             uploadImg(event) {
                 this.selectedFile = event.target.files[0];
-                console.log(this.selectedFile);
+                this.$emit('uploadImg', this.selectedFile, this.popupImg);
+
                 this.selectedFileUrl = URL.createObjectURL(this.selectedFile);
-                console.log(this.selectedFileUrl);
             }
         },
         beforeUnmount() {
