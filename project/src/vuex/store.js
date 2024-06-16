@@ -8,7 +8,9 @@ const store = createStore({
         notes: [],
         filterNotes: [],
         historyNotes: [],
-        searchVal: ''
+        searchVal: '',
+        newData: {},
+        newFiles: []
     },
     mutations,
     actions,

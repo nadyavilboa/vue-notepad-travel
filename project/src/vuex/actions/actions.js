@@ -29,5 +29,14 @@ export default {
             console.log(error);
             return error;
         }
+    },
+    ADD_DATA_IN_STORE({commit}, dataObject) {
+        commit('ADD_DATA_IN_STORE', dataObject)
+    },
+    ADD_FILE_IN_STORE({commit}, fileObject) {
+        commit('ADD_FILE_IN_STORE', fileObject)
+    },
+    CLEAR_FORM_DATA({commit}) {
+        commit('CLEAR_FORM_DATA')
     }
 }

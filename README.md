@@ -10,6 +10,7 @@
 <ol>
     <li>cd project</li>
     <li>npm i</li>
-    <li>json-server --watch db.json</li>
-    <li>Создайте второй терминал, в нем выполните npm run serve</li>
+    <li>Создайте второй терминал</li>
+    <li>Из корня выполните json-server --watch db.json</li>
+    <li>В первом терминале, в папке project выполните npm run serve</li>
 </ol>

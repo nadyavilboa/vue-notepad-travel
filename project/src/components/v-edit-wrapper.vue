@@ -31,6 +31,7 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex';
     import vPopup from './popup/v-popup.vue';
     import vForm from './popup/v-form.vue';
     export default {
@@ -62,6 +63,10 @@
 
         },
         methods: {
+            ...mapGetters([
+                'NEW_DATA',
+                'NEW_FILES'
+            ]),
             showPopup() {
                 this.isPopupShow = true;
             },
@@ -69,7 +74,9 @@
                 this.isPopupShow = false;
             },
             saveNote() {
-
+                console.log('Кто-то хочет изменить одну карточку...');
+                console.log('Новые данные', this.$store.state.newData);
+                console.log('Новые файлы', this.$store.state.newFiles);
             }
         },
 

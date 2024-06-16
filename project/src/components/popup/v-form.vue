@@ -64,6 +64,7 @@
 </template>
 
 <script>
+import { mapActions} from 'vuex';
 import vSelect from '../v-select.vue';
 import vInputWrapper from './v-input-wrapper.vue';
 import vUploadImg from './v-upload-img.vue';
@@ -98,27 +99,36 @@ export default {
         },
         computed: {},
         methods: {
+            ...mapActions([
+                'ADD_FILE_IN_STORE',
+                'ADD_DATA_IN_STORE',
+                'CLEAR_FORM_DATA'
+            ]),
             optionSelect(option) {
                 this.selected = option.name;
                 this.data_object.continent = this.selected;
-                console.log('Object change', this.data_object);
+                this.NEW_DATA = this.data_object;
+                this.ADD_DATA_IN_STORE(this.data_object);
             },
             changeInputVal(value, inputName) {
                 this.data_object[inputName] = value;
-                console.log('Object change', this.data_object);
+                this.NEW_DATA = this.data_object;
+                this.ADD_DATA_IN_STORE(this.data_object);
             },
             uploadImg(fileObject, popupImg) {
-                console.log(fileObject, fileObject.name);
-
                 if (popupImg) {
                     this.data_object.imgPopup = fileObject.name;
                 } else {
                     this.data_object.imgPreview = fileObject.name;
                 }
 
-                console.log('Object change', this.data_object);
+                this.ADD_DATA_IN_STORE(this.data_object);
+                this.ADD_FILE_IN_STORE(fileObject);
             }
         },
+        mounted() {
+            this.CLEAR_FORM_DATA();
+        }
     }
 </script>
 <style scoped lang="scss">

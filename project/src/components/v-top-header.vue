@@ -26,7 +26,7 @@
     </div>
 </template>
 
-<script>
+<script> 
     import vPopup from './popup/v-popup.vue';
     import vForm from './popup/v-form.vue';
     export default {
@@ -52,7 +52,9 @@
                 this.isPopupShow = false;
             },
             addNote() {
-
+                console.log('Кто-то хочет создать новую карточку...');
+                console.log('Новые данные', this.$store.state.newData);
+                console.log('Новые файлы', this.$store.state.newFiles);
             }
         },
 

@@ -51,5 +51,15 @@ export default {
         state.notes.splice(indexDeleteNote, 1);
         state.filterNotes = state.notes.slice();
         state.historyNotes = state. notes.slice();
+    },
+    ADD_DATA_IN_STORE: (state, dataObject) => {
+        state.newData =  dataObject;
+    },
+    ADD_FILE_IN_STORE: (state, fileObject) => {
+        state.newFiles.push(fileObject);
+    },
+    CLEAR_FORM_DATA: (state) => {
+        state.newData = {};
+        state.newFiles = [];
     }
 }
