@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
     async GET_NOTES_FROM_API({commit}) {
         try {
-            const response = await axios.get('http://localhost:3000/notes');
+            const response = await axios.get('http://notepad/get_data.php');
             commit('SET_NOTES_TO_STATE', response.data);
             return response;
         } catch (error) {
