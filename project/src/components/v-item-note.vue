@@ -55,7 +55,7 @@
             </div>
         </div>
         <div class="v-item-note__description text">
-            {{ note_data.description }}
+            {{ note_data.descriptionText }}
         </div>
         <button
             class="v-item-note__btn-full btn btn-active"
